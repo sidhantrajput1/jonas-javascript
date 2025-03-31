@@ -119,7 +119,7 @@ const restaurant = {
     return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
   },
 
-  orderDelivery: function ({ starterIdx, mainIdx, time, address }) {
+  orderDelivery: function ({ starterIdx = 1, mainIdx = 0, time = "20:00", address }) {
     console.log(
       `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
     );
@@ -162,5 +162,4 @@ const {
   fri: { open: o, close: c },
 } = openingHours;
 console.log(o, c);
-
 
