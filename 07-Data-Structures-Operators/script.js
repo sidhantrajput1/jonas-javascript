@@ -2,8 +2,49 @@
 
 "use strict";
 
-console.log("hello world")
+const restaurant = {
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+  order: function (starterIdx, mainIdx) {
+    return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
+  },
+
+  orderDelivery: function ({
+    starterIdx = 1,
+    mainIdx = 0,
+    time = "20:00",
+    address,
+  }) {
+    console.log(
+      `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your all delicious pasta with ${ing1} , ${ing2}, ${ing3}`
+    );
+  },
+};
 
 // const restaurant = {
 //     name: 'Classico Italiano',
@@ -93,39 +134,8 @@ console.log(p, q, r)
 
 // ! Destructuring Object
 
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+/* 
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-
-  order: function (starterIdx, mainIdx) {
-    return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
-  },
-
-  orderDelivery: function ({ starterIdx = 1, mainIdx = 0, time = "20:00", address }) {
-    console.log(
-      `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
-    );
-  },
-
-};
 
 restaurant.orderDelivery({
   time: "10:30",
@@ -163,3 +173,185 @@ const {
 } = openingHours;
 console.log(o, c);
 
+*/
+
+// ! Spread Operator
+
+/*  
+
+const arr = [4, 5, 6];
+const badArray = [1, 2, 3, arr[0], arr[1], arr[2]];
+console.log(badArray);
+
+// ...arr is spread operator
+
+const newArray = [1, 2, 3, ...arr];
+console.log(newArray);
+
+console.log(...newArray);
+console.log(1, 2, 3, 4, 5, 6);
+
+const mainMenu = [...restaurant.mainMenu, "Gnooci"];
+console.log(mainMenu);
+
+// copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+
+// join 2 Arrays
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+// Iterables : String , arrays, map, set | Not  object
+const str = "Sidhant";
+const letters = [...str, "", "S", "I", "N", "G", "H"];
+
+console.log(letters);
+console.log(...str);
+
+// Real World Example
+const ingredients = [
+  prompt("Let's make Pasta! Ingredients 1?"),
+  prompt("Ingredients 2?"),
+  prompt("Ingredients 3?"),
+];
+
+console.log(ingredients);
+
+restaurant.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant.orderPasta(...ingredients)
+
+Objects
+
+const newRestaurant = { foundIn: 1998, ...restaurant, founder: "Sidhant" };
+console.log(newRestaurant);
+
+const restaurantCopy = {...restaurant};
+restaurantCopy.name = 'Ristorante Roma'
+console.log(restaurant.name);
+console.log(restaurantCopy.name)
+
+*/
+
+// ! Rest Pattern and Parameters
+
+/*    
+
+
+// 1) Destructuring 
+
+// SPREAD : Because on right side of = 
+const arr = [1, 2, 3, ...[4, 6, 7]]
+// console.log(arr)
+
+
+// REST : Because on left side of =
+
+const [a, b, ...others] = [1, 2, 3, ...[4, 6, 7]]
+console.log(a, b, others)
+
+const [Pizza, , Risotto, ...othersFood] = [...restaurant.mainMenu, ...restaurant.starterMenu]
+console.log(Pizza, Risotto,  othersFood)
+
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) Function
+
+const add = function(...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum)
+};
+
+add(1, 2, 3); 
+add(1, 2, 3, 4, 5, 6, 7, 8);
+add(3, 2);
+
+const x = [7, 23, 10];
+add(...x);
+
+restaurant.orderPizza('mushroom', 'onion', 'olives', 'spianch');
+
+*/
+
+const restaurant = {
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
+
+  order: function (starterIdx, mainIdx) {
+    return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
+  },
+
+  orderDelivery: function ({
+    starterIdx = 1,
+    mainIdx = 0,
+    time = "20:00",
+    address,
+  }) {
+    console.log(
+      `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your all delicious pasta with ${ing1} , ${ing2}, ${ing3}`
+    );
+  },
+
+  orderPizza: function (mainIngredients, ...othersIngredients) {
+    console.log(mainIngredients);
+    console.log(othersIngredients);
+  },
+};
+
+console.log("------ OR -------");
+console.log("hello" || 23);
+console.log(23 || "hello");
+console.log(true || 0);
+console.log(undefined || null);
+console.log("" || "sidhant");
+
+// javascript always looks first truthy value if truthy value find the return first thruthy value
+console.log(undefined || 0 || "" || "jonas" || 23 || null);
+
+restaurant.numGuest = 23;
+
+const guest1 = restaurant.numGuest ? restaurant.numGuest : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuest || 10;
+console.log(guest2);
+
+console.log("------ AND -------");
+
+console.log(0 && "jonas");
+console.log(7 && "sidhant");
+
+console.log("hello" && 23 && null && "jonas");
+
+if (restaurant.orderPizza) {
+  restaurant.orderPizza("mashroom", "spaich", "chese");
+}
+
+restaurant.orderPizza && restaurant.orderPizza("mashroom", "spaich", "chese");
