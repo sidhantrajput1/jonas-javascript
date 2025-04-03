@@ -276,54 +276,11 @@ restaurant.orderPizza('mushroom', 'onion', 'olives', 'spianch');
 
 */
 
-const restaurant = {
-  name: "Classico Italiano",
-  location: "Via Angelo Tavanti 23, Firenze, Italy",
-  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
-  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
-  mainMenu: ["Pizza", "Pasta", "Risotto"],
+// ! Short Circuiting (&& and \\)
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+/*  
 
-  order: function (starterIdx, mainIdx) {
-    return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
-  },
-
-  orderDelivery: function ({
-    starterIdx = 1,
-    mainIdx = 0,
-    time = "20:00",
-    address,
-  }) {
-    console.log(
-      `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
-    );
-  },
-
-  orderPasta: function (ing1, ing2, ing3) {
-    console.log(
-      `Here is your all delicious pasta with ${ing1} , ${ing2}, ${ing3}`
-    );
-  },
-
-  orderPizza: function (mainIngredients, ...othersIngredients) {
-    console.log(mainIngredients);
-    console.log(othersIngredients);
-  },
-};
+Short Circuiting (&& and \\)
 
 console.log("------ OR -------");
 console.log("hello" || 23);
@@ -355,3 +312,342 @@ if (restaurant.orderPizza) {
 }
 
 restaurant.orderPizza && restaurant.orderPizza("mashroom", "spaich", "chese");
+
+*/
+
+/*   
+
+restaurant.numGuest = 0;
+const guests = restaurant.numGuest || 10
+console.log(guests)
+
+// nullish : null or undefinded (NOT or '');
+const guessCorrect = restaurant.numGuest ?? 10;
+console.log(guessCorrect)
+
+*/
+
+// ! Logical Assignment Operator
+
+/*  
+
+const rest1 = {
+  name : 'capri',
+  numGuests : 0
+}
+
+const rest2 = {
+  name : 'La Piazza',
+  owner : 'Giovanni Rossi'
+}
+
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest2.numGuests || 10;
+
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+
+Nullish Assignment Operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+&& Assignment Operator
+
+rest1.owner = rest1.owner && '<ANONYMOUS>'
+rest2.owner = rest2.owner && '<ANONYMOUS>'
+
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1)
+console.log(rest2)
+
+*/
+
+/* 
+
+ ! for of loop
+
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const item of menu.entries()) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i+1} : ${el}`)
+}
+
+
+
+const weekdays = ['sunday', 'monday', 'tuesday'];
+
+const openingHours = {
+  [weekdays[1]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+}
+
+openingHours : openingHours,
+
+  ES6 enhanced object literals
+  openingHours,
+
+*/
+
+/* 
+
+! Optional chaining
+
+// console.log(restaurant.openingHours.fri.mon.open)
+
+if (restaurant.openingHours && restaurant.openingHours.mon) {
+  console.log(restaurant.openingHours.fri.mon.open);
+}
+
+// With Optional Chaining ES6
+
+// console.log(restaurant.openingHours.mon?.open);
+// console.log(restaurant?.openingHours?.mon?.open)
+
+const days = ["sun", "mon", "tue", "wens", "thus", "frid", "sat"];
+
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? "Closed"
+  console.log(`On ${day}, we open at ${open}`)
+}
+
+// Methods
+
+console.log(restaurant.order?.(0, 1) ?? "Method does not exist");
+console.log(restaurant.orderRisto?.(0, 1) ?? "Method does not exist");
+
+// Arrays 
+
+// const users = [{name : 'Sidhant', email : 'hello@sidhant.io'}];
+
+const users = [];
+
+console.log(users[0]?.name ?? "user array empty");
+
+// without optional chaining 
+if (users.length > 0) {
+  console.log(users[0].name)
+} else {
+  console.log('user array empty')
+}
+
+*/
+
+/* 
+
+! Looping Object : Object key , value & Entries
+
+for (let day of Object.keys(openingHours)) {
+  console.log(day)
+}
+
+const properties = Object.keys(openingHours);
+
+console.log(properties);
+
+let openStr = `We are open on ${properties.length} days: `;
+console.log(openStr);
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+
+console.log(openStr);
+
+// Property values
+
+const values = Object.values(openingHours);
+// console.log(values)
+
+for (const val of values) {
+  console.log(val)
+}
+
+// Entire Object
+
+for (const val of Object.entries(openingHours)) {
+  console.log(val)
+}
+
+const entries = Object.entries(openingHours);
+
+// [key , value]
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}`);
+}
+
+
+*/
+
+/* 
+
+! sets in js
+
+// set is data structure that store unique element
+
+const orderSet = new Set([
+  "pizza",
+  "soya-chap",
+  "meggi",
+  "soya-chap",
+  "meggi",
+  "pizza",
+]);
+console.log(orderSet);
+
+console.log(new Set("sidhant"));
+
+console.log(orderSet.size);
+console.log(orderSet.has("soya-chap"));
+console.log(orderSet.has("passta"));
+orderSet.add("Garlic Bread");
+orderSet.add("Garlic Bread");
+
+orderSet.delete("meggi");
+// orderSet.clear()
+// console.log(orderSet)
+
+for (const order of orderSet) {
+  console.log(order);
+}
+
+// Example
+const staff = ["waiter", "chef", "waiter", "manager", "chef", "waiter"];
+
+// const uniqueStaff = new Set(staff)
+const uniqueStaff = [...new Set(staff)];
+console.log(uniqueStaff);
+
+console.log(
+  new Set(["waiter", "chef", "waiter", "manager", "chef", "waiter"]).size
+);
+
+
+// new operation on set
+
+const italianFood = new Set([
+  'Pasta', 'gnochhi', 'tomatoes', 'olive oil', 'garlic', 'basil'
+])
+
+const maxicanFood = new Set([
+  'tortillas',
+  'beans', 'rice',
+  'tomatoes', 'avocado', 'garlic'
+])
+
+const commonFood = italianFood.intersection(maxicanFood)
+console.log(commonFood)
+console.log([...commonFood])
+
+const intalianMaxicanFusion = italianFood.union(maxicanFood)
+console.log(intalianMaxicanFusion)
+console.log([...new Set([...italianFood, ...maxicanFood])])
+
+const uniqueItalianFood = italianFood.difference(maxicanFood)
+console.log('Difference Italian ', uniqueItalianFood);
+
+const uniqueMaxicanFood = maxicanFood.difference(italianFood);
+console.log(uniqueMaxicanFood)
+
+const uniqueItalianFoodAndMaxicanFood = maxicanFood.symmetricDifference(italianFood)
+console.log(uniqueItalianFoodAndMaxicanFood)
+
+*/
+
+const weekdays = ["sun", "mon", "tue", "wens", "thus", "frid", "sat"];
+const openingHours = {
+  [weekdays[4]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[5]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[6]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+// console.log(openingHours)
+
+const restaurant = {
+  name: "Classico Italiano",
+  location: "Via Angelo Tavanti 23, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegetarian", "Organic"],
+  starterMenu: ["Focaccia", "Bruschetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
+
+  openingHours,
+
+  order: function (starterIdx, mainIdx) {
+    return [this.starterMenu[starterIdx], this.mainMenu[mainIdx]];
+  },
+
+  orderDelivery: function ({
+    starterIdx = 1,
+    mainIdx = 0,
+    time = "20:00",
+    address,
+  }) {
+    console.log(
+      `Ordered recieved! ${this.starterMenu[starterIdx]} and ${this.mainMenu[mainIdx]} will be delivered to ${address} at ${time}`
+    );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your all delicious pasta with ${ing1} , ${ing2}, ${ing3}`
+    );
+  },
+
+  orderPizza: function (mainIngredients, ...othersIngredients) {
+    console.log(mainIngredients);
+    console.log(othersIngredients);
+  },
+};
+
+// ! Map Data Structure
+
+const rest = new Map();
+
+rest.set("name", "Sidhant");
+rest.set(1, "Firenze Italy");
+rest.set(2, "Lisbon, Portugal");
+
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "we are closed :(");
+
+
+rest.set(document.querySelector('h1'))
+console.log(rest.get("name"));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has('open'))
+rest.delete(2)
+// rest.clear()
+console.log(rest.size)
+console.log(rest);
