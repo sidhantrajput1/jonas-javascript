@@ -1,156 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 15px 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 20px;
-        }
-
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        main {
-            padding: 20px;
-        }
-
-        section {
-            margin: 20px 0;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2, h3, h4 {
-            color: #35424a;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .comment-section {
-            background: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            background: #35424a;
-            color: white;
-            padding: 10px 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        button:hover {
-            background: #222;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #35424a;
-            color: #ffffff;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Record Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      padding: 20px;
+    }
+    .form-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .form-group button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>My Blog</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#blog">Blog Post</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section id="home">
-            <h2>Welcome to My Blog</h2>
-            <p>Check out my latest blog posts below.</p>
-            <img src="https://galgotiasonline.edu.in/images/Galgotias%20University.webp" alt="Galgotias Unifest">
-            <h3>Galgotias University Active Learning Ecosystem</h3>
-            <p>This captures a modern and collaborative learning environment where students engage in practical, hands-on work using high-end Apple computers.</p>
-        </section>
-        
-        <section id="blog">
-            <h2>Unifest'24 - Galgotias University's Vintage Cultural Festival</h2>
-            <h4>Event Date: 06th April 2024</h4>
-            <img src="https://tennews.in/wp-content/uploads/2022/04/WhatsApp-Image-2022-04-11-at-8.24.47-PM-e1649702488299.jpeg" alt="Galgotias Unifest">
-            <p>Galgotias University hosted the biggest cultural festival in Northern India, themed "Vintage" this year. The two-day extravaganza, held on April 5th and 6th, featured over 20 events...</p>
-        </section>
-        
-        <section id="first-blog">
-            <h3>My First Blog Post</h3>
-            <h4>Published on: March 27, 2019</h4>
-            <img src="https://www.galgotiasuniversity.edu.in/public/uploads/media/zjTjUueRtOcA36ovbqFxiPai9ETVmkIjkBbzP9UM.jpg" alt="My First Blog">
-            <p>This is the full content of my first blog post...</p>
-        </section>
-        
-        <section class="comment-section">
-            <h3>Leave a Comment</h3>
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Enter your name">
-            
-            <label for="comment">Comment:</label>
-            <textarea id="comment" rows="4" placeholder="Write your comment..."></textarea>
-            
-            <button>Submit</button>
-            
-            <p><strong>Abhay Rana:</strong> Great post! Keep it up.</p>
-        </section>
-        
-        <section id="about">
-            <h2>About This Blog</h2>
-            <p>Welcome to my blog! This is a place where I share my thoughts, experiences, and interesting stories.</p>
-        </section>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 My Blog. All rights reserved.</p>
-    </footer>
+
+  <div class="form-container">
+    <h2>Student Record Form</h2>
+    <form>
+      <div class="form-group">
+        <label for="studentId">Student ID</label>
+        <input type="text" id="studentId" name="studentId" placeholder="Enter your Student ID" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+          <option value="">-- Select Gender --</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="course">Course</label>
+        <input type="text" id="course" name="course" placeholder="Enter your course" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+      </div>
+
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
 </body>
 </html>

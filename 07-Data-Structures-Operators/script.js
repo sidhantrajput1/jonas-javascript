@@ -640,14 +640,14 @@ rest
 
 
 rest.set(document.querySelector('h1'))
-console.log(rest.get("name"));
-console.log(rest.get(1));
+// console.log(rest.get("name"));
+// console.log(rest.get(1));
 
-const time = 8;
-console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+// const time = 8;
+// console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
 
-console.log(rest.has('open'))
-rest.delete(2)
+// console.log(rest.has('open'))
+// rest.delete(2)
 // rest.clear()
-console.log(rest.size)
-console.log(rest);
+// console.log(rest.size)
+// console.log(rest);
