@@ -569,6 +569,196 @@ console.log(uniqueItalianFoodAndMaxicanFood)
 
 */
 
+/* 
+// ! Map Data Structure
+
+const rest = new Map();
+
+rest.set("name", "Sidhant");
+rest.set(1, "Firenze Italy");
+rest.set(2, "Lisbon, Portugal");
+
+rest
+  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
+  .set("open", 11)
+  .set("close", 23)
+  .set(true, "We are open :D")
+  .set(false, "we are closed :(");
+
+
+rest.set(document.querySelector('h1'))
+console.log(rest.get("name"));
+console.log(rest.get(1));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+
+console.log(rest.has('open'))
+rest.delete(2)
+// rest.clear()
+console.log(rest.size)
+console.log(rest);
+
+const question = new Map([
+  ["Question", "What is the best programming language ?"],
+  [1, "C"],
+  [2, "java"],
+  [3, "javascript"],
+  ["Correct", 3],
+  [true, "Correct🎉"],
+  [false, "Try Again!"]
+])
+
+console.log(question)
+
+// Convert Object to map
+// console.log(Object.entries(openingHours))
+const hoursMap = new Map(Object.entries(openingHours));
+// console.log(hoursMap)
+
+// iterating
+console.log(question.get('Question'))
+for (const [key, value] of question) {
+  if (typeof key === 'number') {
+    console.log(`Answer ${key} : ${value}`)
+  }
+}
+
+// const answer = Number(prompt("Your Answer"));
+const answer = 3;
+console.log(answer)
+
+console.log(question.get(question.get('Correct') === answer))
+
+// convert map to array
+console.log([...question])
+console.log(question.entries());
+console.log(question.keys());
+console.log(question.values())
+
+*/
+
+// ! String
+
+/*
+
+// String-----------------------------------------------------
+// First Lecture
+const airLine = "TAP Air Portugal";
+const plane = "B324";
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+
+console.log("D7E10"[0]);
+console.log("D7E10"[1]);
+
+console.log(airLine.length);
+console.log("D3E10".length);
+
+console.log(airLine.indexOf("r")); // starting to ending
+console.log(airLine.lastIndexOf("r")); // ending to starting
+console.log(airLine.search("r"));
+
+console.log(airLine.slice(4)); // (startIdx, endingIdx)
+console.log(airLine.slice(4, 7));
+
+console.log(airLine.slice(0, airLine.indexOf(" ")));
+console.log(airLine.slice(airLine.lastIndexOf(" ") + 1));
+
+console.log(airLine.slice(-2));
+console.log(airLine.slice(1, -1));
+
+const checkMiddleSeat = (s) => {
+  const seat = s.slice(-1);
+
+  if (seat === "B" || seat === "E") console.log("You got the middle seat 😁");
+  else console.log("You got Lucky 😎");
+};
+
+checkMiddleSeat("11B");
+checkMiddleSeat("3BX1");
+checkMiddleSeat("2E")
+
+
+const printString = function(str, st, end) {
+  for(let i = st; i < end; i++) {
+    console.log(str[i]," ")
+  }
+}
+
+printString(airLine, 0, 5);
+printString("Hello World", 0, 5);
+
+console.log(new String("Hello"));
+console.log(typeof new String("hello"));
+
+console.log(typeof new String("sidd").slice(1))
+
+----------------------------------------------------------------------
+-----------------------------------------------------------------------
+! String Lecture 2
+
+const airLine = "TAP air Portugal";
+
+console.log(airLine.toLowerCase());
+console.log(airLine.toUpperCase());
+
+// FIX Capitalization in name
+const passenger = "sIdHaNT"; // Sidhant
+
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect)
+
+// compairing mail
+const email = "hello@sidhant.io";
+const loginEmail = "    HEllo@SidhanT.IO   \n";
+// const lowerEmail = loginEmail.toLowerCase();
+// const correcLoginEmail = lowerEmail.trim(); 
+
+const normalizedMail = loginEmail.toLowerCase().trim();
+console.log(normalizedMail)
+
+console.log(email === normalizedMail)
+
+// Replacing 
+const priceGB = "288,97£"
+const priceUs = priceGB.replace("£", "$").replace(",",".")
+console.log(priceUs)
+
+const announcement = "All Passenger come to boarding door 23. Boardin door 23";
+console.log(announcement.replace("door", "gate"));
+console.log(announcement.replaceAll("door", "gate"))
+
+// Booleans
+const plane = "Airbus A320neo"
+console.log(plane.includes("A320"))
+console.log(plane.includes("Boeing"))
+console.log(plane.startsWith("Air"))
+
+if (plane.startsWith("Air") && plane.endsWith("neo")) {
+  console.log("Part of the new Airbus family")
+}
+
+// exercise for practice
+const checkBags = function(items) {
+  const baggage = items.toLowerCase();
+  if (baggage.includes("knife") || baggage.includes("gun")) {
+    console.log("You are not allowed on board");
+  } else console.log("Welcome aboard!!")
+}
+
+checkBags("I have a laptop , some food and a pocekt knife");
+checkBags("Socks and cemra");
+
+---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
+
+
+*/
+
 const weekdays = ["sun", "mon", "tue", "wens", "thus", "frid", "sat"];
 const openingHours = {
   [weekdays[4]]: {
@@ -623,31 +813,54 @@ const restaurant = {
   },
 };
 
-// ! Map Data Structure
+// split and join in string
+console.log("a+very+nice+string".split("+"));
+console.log("Sidhant Singh".split(' '));
 
-const rest = new Map();
+const [firstName, lastName] = "Sidhant Singh".split(' ');
+const newName = ["MR.", firstName, lastName.toUpperCase()].join(' ');
+console.log(newName)
 
-rest.set("name", "Sidhant");
-rest.set(1, "Firenze Italy");
-rest.set(2, "Lisbon, Portugal");
+const capitalizeName = function(name) {
+  const names = name.split(' ');
+  const namesUpper = []
 
-rest
-  .set("categories", ["Italian", "Pizzeria", "Vegetarian", "Organic"])
-  .set("open", 11)
-  .set("close", 23)
-  .set(true, "We are open :D")
-  .set(false, "we are closed :(");
+  for(const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '))
+}
 
+capitalizeName("jessica ann smith devis");
+capitalizeName("sidhant singh")
 
-rest.set(document.querySelector('h1'))
-// console.log(rest.get("name"));
-// console.log(rest.get(1));
+const message = "go to gate 23!"
+console.log(message.padStart(25, '+').padEnd(35, "+"));
 
-// const time = 8;
-// console.log(rest.get(time > rest.get("open") && time < rest.get("close")));
+// masking credit card number
 
-// console.log(rest.has('open'))
-// rest.delete(2)
-// rest.clear()
-// console.log(rest.size)
-// console.log(rest);
+const maskCreditCard = function (number) {
+  const str = number + ''; // convert number to string
+  const last = str.slice(-4); // get last 4 characher
+  return last.padStart(str.length, "*") // Add '*' in front to match original length
+}
+
+console.log(maskCreditCard(23138978));
+console.log(maskCreditCard(4421988976542));
+console.log(maskCreditCard('22911894379857897348597'))
+
+// const num = 3434134 + ''
+// console.log(typeof num)
+// const name = "sidhantsingh"
+// console.log(name.slice(-4))
+
+const message2 = "Bad Weathers... All Departures Delayed...."
+console.log(message2.repeat(4))
+
+const planeLine = function(n) {
+  console.log(`There are ${n} planes in Line ${'✈️'.repeat(n)}`)
+}
+
+planeLine(5);
+planeLine(11)
