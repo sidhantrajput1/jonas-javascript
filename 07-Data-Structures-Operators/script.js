@@ -757,6 +757,58 @@ checkBags("Socks and cemra");
 ---------------------------------------------------------------------------------------------
 
 
+// split and join in string
+console.log("a+very+nice+string".split("+"));
+console.log("Sidhant Singh".split(' '));
+
+const [firstName, lastName] = "Sidhant Singh".split(' ');
+const newName = ["MR.", firstName, lastName.toUpperCase()].join(' ');
+console.log(newName)
+
+const capitalizeName = function(name) {
+  const names = name.split(' ');
+  const namesUpper = []
+
+  for(const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '))
+}
+
+capitalizeName("jessica ann smith devis");
+capitalizeName("sidhant singh")
+
+const message = "go to gate 23!"
+console.log(message.padStart(25, '+').padEnd(35, "+"));
+
+// masking credit card number
+
+const maskCreditCard = function (number) {
+  const str = number + ''; // convert number to string
+  const last = str.slice(-4); // get last 4 characher
+  return last.padStart(str.length, "*") // Add '*' in front to match original length
+}
+
+console.log(maskCreditCard(23138978));
+console.log(maskCreditCard(4421988976542));
+console.log(maskCreditCard('22911894379857897348597'))
+
+const num = 3434134 + ''
+console.log(typeof num)
+const name = "sidhantsingh"
+console.log(name.slice(-4))
+
+const message2 = "Bad Weathers... All Departures Delayed...."
+console.log(message2.repeat(4))
+
+const planeLine = function(n) {
+  console.log(`There are ${n} planes in Line ${'✈️'.repeat(n)}`)
+}
+
+planeLine(5);
+planeLine(11)
+
 */
 
 const weekdays = ["sun", "mon", "tue", "wens", "thus", "frid", "sat"];
@@ -813,54 +865,40 @@ const restaurant = {
   },
 };
 
-// split and join in string
-console.log("a+very+nice+string".split("+"));
-console.log("Sidhant Singh".split(' '));
+/*
 
-const [firstName, lastName] = "Sidhant Singh".split(' ');
-const newName = ["MR.", firstName, lastName.toUpperCase()].join(' ');
-console.log(newName)
 
-const capitalizeName = function(name) {
-  const names = name.split(' ');
-  const namesUpper = []
+///////////////////////////////////////
+// Coding Challenge #4
 
-  for(const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  console.log(namesUpper.join(' '))
-}
 
-capitalizeName("jessica ann smith devis");
-capitalizeName("sidhant singh")
+Write a program that receives a list of variable names written in underscore_case and convert them to camelCase.
 
-const message = "go to gate 23!"
-console.log(message.padStart(25, '+').padEnd(35, "+"));
+The input will come from a textarea inserted into the DOM (see code below), and conversion will happen when the button is pressed.
 
-// masking credit card number
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable 
+  calculate_AGE
+delayed_departure
 
-const maskCreditCard = function (number) {
-  const str = number + ''; // convert number to string
-  const last = str.slice(-4); // get last 4 characher
-  return last.padStart(str.length, "*") // Add '*' in front to match original length
-}
+SHOULD PRODUCE THIS OUTPUT (5 separate console.log outputs)
+underscoreCase      ✅
+firstName           ✅✅
+someVariable        ✅✅✅
+calculateAge        ✅✅✅✅
+delayedDeparture    ✅✅✅✅✅
 
-console.log(maskCreditCard(23138978));
-console.log(maskCreditCard(4421988976542));
-console.log(maskCreditCard('22911894379857897348597'))
+HINT 1: Remember which character defines a new line in the textarea 😉
+HINT 2: The solution only needs to work for a variable made out of 2 words, like a_b
+HINT 3: Start without worrying about the ✅. Tackle that only after you have the variable name conversion working 😉
+HINT 4: This challenge is difficult on purpose, so start watching the solution in case you're stuck. Then pause and continue!
 
-// const num = 3434134 + ''
-// console.log(typeof num)
-// const name = "sidhantsingh"
-// console.log(name.slice(-4))
+Afterwards, test with your own test data!
 
-const message2 = "Bad Weathers... All Departures Delayed...."
-console.log(message2.repeat(4))
+GOOD LUCK 😀
 
-const planeLine = function(n) {
-  console.log(`There are ${n} planes in Line ${'✈️'.repeat(n)}`)
-}
+*/
 
-planeLine(5);
-planeLine(11)
+document.body.append()
