@@ -148,8 +148,9 @@ greet("Hello")("Yuvraj");
 const greetArr = (greeting) => (name) => console.log(`${greeting} ${name}`);
 greetArr("Hi")("Wahid");
 
-  
-*/
+
+! call(), bind(), apply() - 
+
 
 const lufthansa = {
   airline: "lufthansa",
@@ -180,6 +181,7 @@ const book = lufthansa.book;
 // call method
 book.call(eurowings, 32, "Sarah Willims")
 book.call(eurowings, 56, 'Jobas Schmedtmann')
+
 console.log(eurowings)
 
 book.call(lufthansa, 26, 'rose gyllon')
@@ -195,11 +197,61 @@ book.call(swiss, 45, 'weekend')
 console.log(swiss)
 
 // apply method
-const flightData = [583, 'George Cooper']
-book.apply(swiss, flightData)
+// const flightData = [583, 'George Cooper']
+// book.apply(swiss, flightData)
+
+book.apply(swiss, [512, 'Roshni Singh'])
 console.log(swiss)
 
 // better way
-book.call(swiss, ...flightData)
-console.log(swiss)
+// book.call(swiss, ...flightData)
+// console.log(swiss)
+
+
+// blind menthod
+const bookEW = book.bind(eurowings);
+const bookSW = book.bind(swiss);
+
+bookEW(23, "Sonam Singh");
+bookEW(56, "Kartik Singh")
+console.log(eurowings)
+
+// bookEW(23, "Sonam Singh");
+// bookEW(56, "Kartik Singh")
+// console.log(swiss)
+
+const bookEW23 = book.bind(eurowings, 23);
+bookEW23('jonas')
+bookEW23('Kartik')
+
+  
+*/
+
+
+// closures in js
+
+function parent() {
+    const x = 10;
+    return function child() {
+        console.log(x);
+    }
+}
+
+const ans = parent();
+ans();
+ans();
+
+// closures funtion yo hota hai jo call hone ke baad bhi apne parent function ke variable ko yaad rkhta hai yaani  lexical scope ko retain rkhta hai 
+
+// another example of clousure
+
+function outer() {
+    const x = "Hello - Sidhant";
+    return function inner() {
+        console.log(x)
+    }
+}
+
+const greet = outer();
+greet();
 
