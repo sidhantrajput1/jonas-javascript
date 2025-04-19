@@ -247,32 +247,35 @@ const user = "Steven Thomas Williams";
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 
 calcDisplayBalance(account1.movements);
 
-const calcDisplaySummary = function (movements) {
-  const income = movements
-    .filter((mov) => mov > 0)
-    .reduce((acc, mov) => acc + mov, 0);
+const calcDisplaySummary = function (acc) {
+  // Total Income
+  const income = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((sum, mov) => sum + mov, 0);
   labelSumIn.textContent = `${income}€`;
 
-  const outcome = movements
-    .filter((mov) => mov < 0)
-    .reduce((acc, mov) => acc + mov, 0);
+  // Total Outgoing
+  const outcome = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((sum, mov) => sum + mov, 0);
   labelSumOut.textContent = `${Math.abs(outcome)}€`;
+  console.log(outcome)
 
-  const interest = movements
-    .filter((mov) => mov > 0)
-    .map((interest) => (interest * 1.2) / 100)
-    .filter((int) => int >= 1)
-    .reduce((acc, int) => acc + int, 0);
-
+  // Interest (only if interest >= 1)
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * acc.interestRate) / 100)
+    .filter(int => int >= 1)
+    .reduce((sum, int) => sum + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
 
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 const createUserName = function (accs) {
   accs.forEach((acc) => {
@@ -285,6 +288,39 @@ const createUserName = function (accs) {
 };
 
 createUserName(accounts);
+
+
+// Event handler
+let currentAccount;
+
+btnLogin.addEventListener('click', function(e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find((acc) => acc.username === inputLoginUsername.value)
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and message
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`
+    containerApp.style.opacity = 100;
+
+    // clear input field after login
+    inputLoginUsername.value = inputLoginPin.value =  '';
+    inputLoginPin.blur();
+
+    // Display Movements
+    displayMovements(currentAccount.movements)
+
+    // display balance
+    calcDisplayBalance(currentAccount.movements)
+
+    // display summary
+    calcDisplaySummary(currentAccount)
+
+    console.log("Login Successfully")
+  }
+  console.log(currentAccount)
+})
+
 // console.log(accounts)
 
 /* 
@@ -440,3 +476,28 @@ const totalDepositsUSD = movements
 console.log(totalDepositsUSD);
 
 */
+
+////////////////////////////////////
+// Coding Challenge #3
+
+/* 
+Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+
+const calcAverageHumanAge = ages => {
+  const averageAge = ages.map((dogAge) =>
+    dogAge <= 2 ? 2 * dogAge : 16 + dogAge * 4
+  ).filter((num) => num >= 18).reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+  console.log(averageAge)
+};
+
+calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
+calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4])
+
+
+GOOD LUCK 😀
+*/
+
