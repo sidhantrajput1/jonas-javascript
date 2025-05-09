@@ -175,6 +175,7 @@ const account1 = {
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
   interestRate: 1.2, // %
   pin: 1111,
+  type: "premimum",
 };
 
 const account2 = {
@@ -182,6 +183,7 @@ const account2 = {
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
+  type: "standard",
 };
 
 const account3 = {
@@ -189,6 +191,7 @@ const account3 = {
   movements: [200, -200, 340, -300, -20, 50, 400, -460],
   interestRate: 0.7,
   pin: 3333,
+  type: "premimum",
 };
 
 const account4 = {
@@ -196,6 +199,7 @@ const account4 = {
   movements: [430, 1000, 700, 50, 90],
   interestRate: 1,
   pin: 4444,
+  type: "basic",
 };
 
 const accounts = [account1, account2, account3, account4];
@@ -615,20 +619,20 @@ console.log(arr.flat())
 const arrDeep = [[1, 2, [3, 4, 5, [6, 7]]], [8, 9], 10]
 console.log(arrDeep.flat(3))
 
-// console.log(movements.find((ele)=>ele >= 200))
-// console.log(movements.findIndex(ele=>ele ===200))
-// console.log(movements.findLastIndex(ele=>ele === 20))
-// console.log(movements.some(mov => mov > 0))
-// console.log(movements.every((ele)=>ele<-1000))
-// console.log(movements.)
+console.log(movements.find((ele)=>ele >= 200))
+console.log(movements.findIndex(ele=>ele ===200))
+console.log(movements.findLastIndex(ele=>ele === 20))
+console.log(movements.some(mov => mov > 0))
+console.log(movements.every((ele)=>ele<-1000))
+console.log(movements.)
 
 const accountMovements = accounts.map(acc => acc.movements) 
-// console.log(accountMovements)
-// const allMovements = accountMovements.flat()
-// console.log(allMovements)
-// const overallbalance = allMovements.reduce((acc, mov) => 
-//    acc + mov, 0)
-// console.log(overallbalance)
+console.log(accountMovements)
+const allMovements = accountMovements.flat()
+console.log(allMovements)
+const overallbalance = allMovements.reduce((acc, mov) => 
+   acc + mov, 0)
+console.log(overallbalance)
 
 const overallBalance = accounts.map(acc => acc.movements).flat().reduce((acc, mov) => acc + mov, 0)
 console.log(overallBalance)
@@ -651,9 +655,137 @@ const movements = [200, 450, -300, 3000, -650, -130, 70, 1300];
 // movements.sort((a, b) => b - a);
 // console.log(movements)
 
+/*
+
 console.log(movements);
 
 const groupedMovements = Object.groupBy(movements, (movement) =>
   movement > 0 ? "deposits" : "withdrawls"
 );
 console.log(groupedMovements);
+
+const groupByActivity = Object.groupBy(accounts, account => {
+  const movementAccount = account.movements.length;
+
+  if (movementAccount >= 8) return "very active"
+  if (movementAccount >= 4) return "active"
+  if (movementAccount <= 1) return "moderate"
+
+  return "inactive"
+})
+
+console.log(groupByActivity)
+
+const groupedAccount1 = Object.groupBy(accounts, account => account.type)
+console.log(groupedAccount1)
+const groupedAccount2 = Object.groupBy(accounts, ({type}) => type)
+console.log(groupedAccount2)
+
+
+console.log([1, 2, 3, 4, 5, 6, 7]);
+console.log(new Array(1, 2, 3, 4, 5, 6, 7, 8));
+
+console.log(new Array(9).fill(8, 1, 7));
+const x = new Array(7);
+// console.log(x)
+
+x.fill(2);
+console.log(x);
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+arr.fill(23, 2, 5);
+console.log(arr);
+
+// create a array programatically
+
+const y = Array.from({ length: 8 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 8 }, (_, i) => i + 1);
+console.log(z);
+
+const movementUI = Array.from(document.querySelector('.movements__value'))
+console.log(movementUI)
+
+labelBalance.addEventListener("click", () => {
+  const movementUI = Array.from(document.querySelectorAll(".movements__value"));
+  console.log(movementUI.map((el) => el.textContent.replace("€", "")));
+});
+
+labelBalance.addEventListener("click", () => {
+  const movementUI = Array.from(document.querySelectorAll(".movements__value"), (el) => el.textContent.replace("€", ""));
+  console.log(movementUI);
+});
+
+-------------------------------------------------------------
+Non-Destructive Alternatives : toReversed, toSorted, toSpliceted
+console.log(movements) 
+
+const reverseMov = movements.slice().reverse()
+const reverseMov = movements.toReversed();
+console.log(reverseMov)
+console.log(movements)
+
+// toSort(), toSpliced()
+const newMovements = movements.with(1, 4200)
+console.log(newMovements)
+console.log(movements)
+
+const arr = [1, 2, 3, 4];
+console.log(arr)
+arr[0] = 5;
+console.log(arr)
+
+*/
+// 1.
+const bankDepositSum1 = accounts
+  .map((acc) => acc.movements)
+  .flat()
+  .reduce((acc, curr) => acc + curr);
+
+const bankDepostSum = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, curr) => acc + curr);
+
+const bankDepositSum = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((val) => val > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(bankDepositSum);
+
+// 2.
+
+const numDeposit10001 = accounts
+  .flatMap((acc) => acc.movements)
+  .filter((val) => val >= 1000)
+  .reduce((acc, curr) => acc + curr, 0);
+
+const numDeposit1000 = accounts
+  .flatMap((acc) => acc.movements)
+  .reduce((acc, curr) => (curr >= 1000 ? acc + curr : acc), 0);
+
+console.log(numDeposit1000);
+
+const sums = accounts
+  .flatMap(({ movements }) => movements)
+  .reduce(
+    (sum, curr) => {
+      // curr > 0 ? (sum.deposits += curr) : (sum.withdrawals += curr);
+      sum[curr > 0 ? "deposits" : "withdrawals"] += curr
+      return sum;
+    },
+    { deposits: 0, withdrawals: 0 }
+  );
+console.log(sums);
+
+// my name is sidhant rajput -> My Name Is Sidhant Singh
+const convertUpperCase = function (title) {
+  const exceptions = ['a', 'an', 'is', 'the', 'but', 'or', 'on', 'in', 'with']
+  return title.split(" ").map(word => exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)).join(" ")
+}
+
+const res = convertUpperCase("my name is sidhant rajput")
+console.log(res)
+
+
