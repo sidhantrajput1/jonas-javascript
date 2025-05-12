@@ -56,3 +56,24 @@
 //     console.log("bye")
 // })
 
+//  const hamburger = document.querySelector('.hamburger');
+//     const navLinks = document.querySelector('.nav-links');
+
+//     hamburger.addEventListener('click', () => {
+//       navLinks.classList.toggle('open');
+//       hamburger.classList.toggle('toggle');
+//     });
+
+// console.log(window)
+
+// this will work , when you refresh the web page
+
+window.onload = () => {
+  // console.log("Hello world")
+  const heading = document.createElement("h1")
+  console.log(heading)
+  const headingText = document.createTextNode("hey there, i am frontend developer")
+  console.log(headingText)
+  heading.appendChild(headingText)
+  document.body.appendChild(heading)
+}
