@@ -1,79 +1,63 @@
-// console.log("Ehllo")
 
-// const res = Promise.resolve(57);
-// console.log(res)
+const green = document.querySelector('.green')
+const red = document.querySelector('.red')
+const blue = document.querySelector('.blue')
 
+//capturing
+/*
+green.addEventListener('click', (e) => {
+    console.log("3. Green Evennt Listener")
+}, {capture : true , once : true})
 
-// // const user = {name : "Bolb"}
-// // console.log(user?.ad)
-// var arr = [1, 2, 3, 4 ,5 ];
-// for (var i = 0; i < arr.length; i++) {
-//     setTimeout(() => {
-//         console.log(arr[i]);
-//     }, 1000)
-// }
+red.addEventListener('click', (e) => {
+    console.log("2. Red Evennt Listener")
+}, {capture : true, once : true})
 
-// switch (0) {
-//     case 0:
-//         console.log("hello 1")
-//         break;
-//     case -0 : 
-//         console.log("Hello 2")
-//         break;
-//     default:
-//         console.log("hello 3")
-//         break;
-// }
+blue.addEventListener('click', function() {
+    console.log("1. Blue Event Listener")
+}, {capture : true , once : true})
+
+*/
 
 
-// function mul(a, b = 2) {
-//     return a * b
-// }
-
-// console.log(mul(3, undefined))
-// console.log(mul(3, null))
-
-
-// function foo() {
-//     let count = 0;
-//     return function () {
-//         console.log(count++);
-//     }
-// }
-
-// const bar1 = foo() 
-// const bar2 = foo() 
-
-// bar1()
-// bar1()
-// bar2()
-// bar2()
-
-// document.querySelector('.button').addEventListener('click', () => {
-//     console.log("hello")
-// })
-// document.querySelector('.div').addEventListener('click', () => {
-//     console.log("bye")
+// Bubbling
+// green.addEventListener('click', (e) => {
+//     console.log("3. Green Evennt Listener")
 // })
 
-//  const hamburger = document.querySelector('.hamburger');
-//     const navLinks = document.querySelector('.nav-links');
+// red.addEventListener('click', (e) => {
+//     console.log("2. Red Evennt Listener")
+// })
 
-//     hamburger.addEventListener('click', () => {
-//       navLinks.classList.toggle('open');
-//       hamburger.classList.toggle('toggle');
-//     });
+// blue.addEventListener('click', function() {
+//     console.log("1. Blue Event Listener")
+// })
 
-// console.log(window)
+// Evemt Bubbling
 
-// this will work , when you refresh the web page
+const addCardBtn = document.querySelector('.card')
+const container = document.querySelector('.container')
+const removeCard = document.querySelector('.card')
 
-window.onload = () => {
-  // console.log("Hello world")
-  const heading = document.createElement("h1")
-  console.log(heading)
-  const headingText = document.createTextNode("hey there, i am frontend developer")
-  console.log(headingText)
-  heading.appendChild(headingText)
-  document.body.appendChild(heading)
-}
+let count =  1;
+
+addCardBtn.addEventListener('click', function(e) {
+    const newDiv = document.createElement('div')
+    newDiv.classList.add('card')
+    newDiv.innerText = count++
+
+    // newDiv.addEventListener('click', function(e) {
+    //     e.target.remove('card')
+    // })
+
+    container.appendChild(newDiv)
+})
+
+container.addEventListener('click', (e) => {
+    if(e.target.classList.contains('card') && !e.target.classList.contains('add-card')) {
+        e.target.remove('card')
+    }
+})
+
+
+setTimeout("console.log(true)")
