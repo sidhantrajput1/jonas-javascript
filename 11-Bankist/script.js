@@ -566,16 +566,16 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 1000)
 
 // Event Propagation
 
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-// console.log(randomInt(1, 10))
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// // console.log(randomInt(1, 10))
 
-const randomColor = () => {
-  return `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(
-    0,
-    255
-  )})`;
-};
+// const randomColor = () => {
+//   return `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(
+//     0,
+//     255
+//   )})`;
+// };
 
 // console.log(randomColor());
 
