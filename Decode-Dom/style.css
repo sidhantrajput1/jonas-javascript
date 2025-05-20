@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bold {
+    font-size: x-large;
+    font-weight: 700;
+    color: orangered;
+}
+
+
+
+.hover:hover {
+    color: seagreen;
+}
+
+.fontStyle {
+    padding: 1rem;
+    font-size: x-large;
+    font-weight: 700;
+    background-color: #333;
+    color: azure;
+}
+
+.dev {
+    color: orangered;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+    color: cadetblue;
+}
+
+.box {
+    height: 100px;
+    width: 100px;
+    background-color: cornflowerblue;
+    margin: 1rem;
+    margin-top: 1000px;
+}
