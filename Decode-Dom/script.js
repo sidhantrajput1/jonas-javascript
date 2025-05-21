@@ -335,3 +335,241 @@ generalBtn.addEventListener('click', () => filterList("general"))
 
 */
 
+/* 
+
+window.parent is a property is used to access the parent window of the current window
+
+you use window.parent, when you are using with <iframes src="./child.html" frameborder="1"></iframe> embeded
+window within a web page
+
+syntax:
+window.parent
+<iframe src="./child.html" frameborder="1", width="600px" height="400px"><iframe>
+
+*/
+
+
+/* 
+
+textContent = "" : is used to set and get the text inside an html elements 
+    set the text inside an html elements
+    ex: div.textContent ="Hey Sidhant" output : hey sidhant , inside html : <div>hey Sidhant</div>
+        div.textContent = "<bold>Hey Kartik</bold>" output : <bold>Hey Kartik</bold>
+
+innerHTML = "" Return or sey the html content (including tags)
+    can insert html elements (bold, italic etc)
+ex : div.innerHTML = "<bold>Hey Kartik</bold>" output : hey kartik inside html  : <div><bold>Hey Kartik</bold></div>
+*/
+
+/*
+
+    Append Multiple Child Elements to a Parent Element 
+
+
+const myList = document.querySelector('.myList')
+
+function appendChildOnParent(parent, element) {
+    const list = document.createElement('li')
+
+    list.textContent = element;
+
+    parent.appendChild(list)
+}
+
+appendChildOnParent(myList, "sidhant")
+appendChildOnParent(myList, "Rohit")
+appendChildOnParent(myList, "Abhishek")
+appendChildOnParent(myList, "Manish")
+
+
+
+
+
+const myList = document.querySelector('.myList');
+
+function appendChildOnParent(parent, elements) {
+    const fragment = document.createDocumentFragment();
+
+    elements.forEach(element => {
+        const list = document.createElement('li');
+        list.textContent = element;
+        fragment.appendChild(list);
+    });
+    
+    parent.appendChild(fragment);
+}
+
+appendChildOnParent(myList, ["sidhant", "manish", "Rohit", "Amit", "Vaishani"]);
+
+
+document.title = "Web Page"
+document.title = "(2) " + document.title 
+
+
+*/
+
+
+/*  
+element.insertAdjacentHTML(postion, elements)
+similiar to  innerHTML
+
+postion : A String representing the postion realtive to the targetElements
+element : The Elements to be inserted into to the tree
+
+'beforebegin': Before the targetElement itself.
+'afterbegin': Just inside the targetElement, before its first child.
+'beforeend': Just inside the targetElement, after its last child.
+'afterend': After the targetElement itself.
+
+
+const element = document.querySelector('.para');
+
+element.insertAdjacentHTML('beforebegin', 'Beforebegin kartik')
+element.insertAdjacentHTML('afterbegin', "AfterBegin rohit")
+element.insertAdjacentHTML('beforeend', 'Beforeend Sidhant')
+element.insertAdjacentHTML('afterend', 'Beforebegin gungun')
+
+
+
+const element = document.querySelector('.para');
+
+// Create elements properly
+const boldEl = document.createElement('b');
+boldEl.textContent = 'Sidhant';
+
+const emEl = document.createElement('em');
+emEl.textContent = 'Hey Brother';
+
+const span1 = document.createElement('span');
+span1.textContent = 'Hello Sidhant';
+
+const span2 = document.createElement('span');
+span2.textContent = 'Moun';
+
+// Now use insertAdjacentElement
+element.insertAdjacentElement('afterbegin', boldEl);
+element.insertAdjacentElement('afterend', emEl);
+element.insertAdjacentElement('beforebegin', span1);
+element.insertAdjacentElement('beforeend', span2);
+
+
+*/
+
+/*
+
+const area = document.querySelector('.area')
+const box = document.createElement('div')
+
+box.classList.add('box')
+
+// Before the targetElement itself
+area.insertAdjacentElement('beforebegin', box)
+
+// After the targetElement itself.
+// area.insertAdjacentElement('afterend', box)
+
+// Just inside the targetElement, after its last child.
+// area.insertAdjacentElement('beforeend', box)
+
+// Just inside the targetElement, before its first child.
+area.insertAdjacentElement("afterbegin", box)
+
+// area.insertAdjacentHTML('beforebegin', '<p>Hello <b>World</b></p>')
+// area.insertAdjacentText('beforeend', '<p>Hello <b>Rahul</b></p>')
+// area.insertAdjacentElement('afterend', '<p>Hello <b>Sidhant</b></p>')
+
+*/
+
+/*    ***************************************************** */
+
+/*  
+
+Element.matches()
+Element.matches() is a DOM method that checks if an element would be selected by a given CSS selector.
+
+
+const myPara = document.querySelector('.myPara')
+// const result = myPara.matches('.myPara')
+const result = myPara.matches('[data-name]')
+console.log(result)
+
+<p class="myPara" data-name="Sidhant">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus aliquam
+</p>
+
+*/
+
+/*
+Replace child elements with replaceChild() 
+"It takes two arguments: the first is the new element, and the second is the element you want to replace."
+
+newChild → The new element you want to insert.
+
+newChild → The new element you want to insert.
+oldChild : The existing child element you want to replace.
+
+const myList = document.querySelector('.myList');  
+const secondItem = myList.children[1];             
+console.log(secondItem.textContent);
+
+const newList = document.createElement('li')
+newList.textContent = "Meenu"
+
+myList.replaceChild(newList, secondItem)
+*/
+
+/* 
+
+append() : The append() method is used to insert content (text or elements) at the end of a parent element's content.
+
+All content is added as the last child of the element.
+
+const myList = document.querySelector('.myList')
+
+const strong = document.createElement('strong')
+const em = document.createElement('em')
+
+strong.textContent = "i'm strong text"
+em.textContent = "i'm em tag"
+
+myList.append(strong, em , "hey there")
+
+
+     <ul class="myList">
+      <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</li>
+      <li>Atque architecto ducimus aliquam!</li>
+      <li>Lorem ipsum dolor sit amet.</li>c
+     </ul>
+
+
+
+const pTag = document.querySelector('.example p')
+
+const newInput = document.createElement('input')
+newInput.value = "I'm Input"
+
+const btn = document.createElement('button')
+btn.textContent = "Click Me!!"
+
+pTag.replaceWith(newInput, btn)
+
+*/
+
+
+let pos;
+
+document.addEventListener('mousemove', function({pageX, pageY}) {
+    pos = `${pageX}, ${pageY}`
+    console.log(pos)
+})
+
+/*
+
+❌
+1. Closest()
+2. append()
+3. insertAdjacentHTML(postion, newNode)
+4. Matches
+5. replaceWith
+❌
+*/
