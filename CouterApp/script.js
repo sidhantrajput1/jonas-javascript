@@ -24,15 +24,15 @@ const resetBtn = document.querySelector(".resetBtn");
 //     counter.textContent = count;
 // })
 
-let count = localStorage.getItem("count")
-  ? parseInt(localStorage.getItem("count"))
+let count = localStorage.getItem("Count")
+  ? parseInt(localStorage.getItem("Count"))
   : 1;
 counter.textContent = count;
 
 function updateCounter(newCount) {
     count = newCount;
     counter.textContent = count;
-    localStorage.setItem("count", count)
+    localStorage.setItem("Count", count)
 }
 
 increaseBtn.addEventListener('click', function() {
