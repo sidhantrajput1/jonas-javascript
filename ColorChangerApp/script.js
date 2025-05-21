@@ -18,5 +18,5 @@ getColorCode()
 colorBtn.addEventListener('click', function() {
     const randomColor = getColorCode();
     document.body.style.backgroundColor = randomColor;
-    colorBtn.textContent = `Current Color: ${randomColor}`
+    colorCode.textContent = `Current Color: ${randomColor}`
 })
