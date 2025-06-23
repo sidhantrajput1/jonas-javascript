@@ -1,0 +1,17 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.item {
+  margin: 10px 0;
+  padding: 200px;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+#loader {
+  text-align: center;
+  padding: 20px;
+  display: none;
+}
