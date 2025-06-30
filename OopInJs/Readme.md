@@ -49,3 +49,6 @@ Answer : A factory function is simply function that return a new object. it acts
 
 
 The constructor() is a special method that is automatically called when a new object is created using the class.
+
+
+- super() is used inside a child class constructor to call and execute the constructor of its parent class.
