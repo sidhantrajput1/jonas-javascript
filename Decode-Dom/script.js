@@ -29,9 +29,9 @@
 // console.log(newElement.innerHTML)
 
 /* 
-// appendChild()
+appendChild()
 
-// appendChild() method is add the specified element as the last child of parent element
+appendChild() method is add the specified element as the last child of parent element
 
 const ulList = document.querySelector(".ul");
 
